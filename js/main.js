@@ -99,13 +99,19 @@ $(document).ready(function(){
       },
   ];
 
+  const colors = [
+    "blue",
+    "orange",
+    "purple"
+  ];
 // prendiamo delle referenze
 const container = $(".icons");
-
 // richiamo della funzione
-printIcons(icons, container);
+ // printIcons(coloredIcons, container);
 
 
+const coloredIcons = colorIcons(icons, colors);
+console.log(coloredIcons);
 
 }); //fine documento
 
@@ -129,4 +135,38 @@ function printIcons(icons, container) {
     container.append(html);
   });
 
+  // creiamo una funzione per assegnare un colore
+  function colorIcons(icons, colors) {
+  // adesso dobbiamo recuperare tutti i types presenti nelle icone attraverso una nuova funzione
+  // get types
+  const types = getType(icons);
+  console.log(types);
+}
+
+  // utilizziamo MAP per fare una copia di arrey di oggetti
+  const coloredIcons = icons.map((icon) => {
+    const indexType = types.indexOf(icon.type);
+
+    return {
+      ...icon,
+      color: colors[indexType]
+    }
+    return coloredIcons;
+  });
+
+
+
+  // funzione per getType(Icons)
+  function getType(icons) {
+    const types = [];
+ // cicliamo sugli array per farci restituire il valore desiderato
+    icons.forEach((icon) => {
+      if (!types.includes(icon.type)) {
+        types.push(icon.type);
+      }
+      // qui diciamo che se il type della icon non è incluso nel types, ce lo stampa nell'array
+
+    });
+    return types;
+  }
 }
