@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  padding: 20px;
+  font-size: 40px;
+  color: dodgerblue;
+}
+.search {
+  display: flex;
+  justify-content: center;
+  background-color: dodgerblue;
+  color: #fff;
+  padding: 20px;
+}
+.search select {
+  margin-left: 15px;
+}
+.icons {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 20px;
+  background-color: #ddd;
+
+}
+.icons .icon {
+  flex-basis: calc(100% / 6 - 20px);
+  margin: 20px 10px;
+  background-color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  border-radius: 10px;
+}
