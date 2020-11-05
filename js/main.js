@@ -107,19 +107,42 @@ $(document).ready(function(){
   console.log(colors);
 // prendiamo delle referenze
 const container = $(".icons");
-// richiamo della funzione
+// richiamo della funzione // PUNTO 1
  // printIcons(icons, container);
 
-
+// PUNTO 2
 const coloredIcons = colorIcons(icons, colors);
 console.log(coloredIcons);
 printIcons(coloredIcons, container);
+
+
+
+// PUNTO 3
+const select = $("#type");
+const types = getType(icons);
+// generazione option
+genOption(types, select);
+// cambio select aggiorno dati
+select.change(() => {
+  const selected = select.val();
+  console.log(selected);
+
+  const filteredIcons = filterIcons(coloredIcons, selected);
+  printIcons(filterIcons, container);
+});
+
+
+
 }); //fine documento
+
+
 
 
 // FUNZIONI
 // funzioni per stampare a schermo
 function printIcons(icons, container) {
+
+  container.html('');
 
   icons.forEach((icon) => {
     const{family, prefix, name, color} = icon;  //destrutturazione
@@ -174,4 +197,25 @@ function printIcons(icons, container) {
 
     });
     return types;
+  }
+
+
+  // gen option by type
+  function genOption(types, select) {
+    types.forEach( (opt) => {
+      select.append(`<option value="${opt}">${opt}</option>`);
+    });
+  }
+
+  function filterIcons(coloredIcons, selected) {
+
+    if (selected === "all") {
+      return coloredIcons;
+    }
+
+    const filtered = coloredIcons.filter((icon) => {
+      return icon.type === selected;
+    });
+
+    return filtered;
   }
