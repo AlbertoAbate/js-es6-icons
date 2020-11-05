@@ -104,6 +104,7 @@ $(document).ready(function(){
     "orange",
     "purple"
   ];
+  console.log(colors);
 // prendiamo delle referenze
 const container = $(".icons");
 // richiamo della funzione
@@ -121,7 +122,7 @@ console.log(coloredIcons);
 function printIcons(icons, container) {
 
   icons.forEach((icon) => {
-    const{family, prefix, name} = icon;  //destrutturazione
+    const{family, prefix, name, color} = icon;  //destrutturazione
 
     const html =   //template literal per concatenare più stringhe
 
@@ -141,7 +142,6 @@ function printIcons(icons, container) {
   // get types
   const types = getType(icons);
   console.log(types);
-}
 
   // utilizziamo MAP per fare una copia di arrey di oggetti
   const coloredIcons = icons.map((icon) => {
@@ -150,9 +150,12 @@ function printIcons(icons, container) {
     return {
       ...icon,
       color: colors[indexType]
-    }
-    return coloredIcons;
+    };
   });
+
+  return coloredIcons;
+
+}
 
 
 
@@ -161,7 +164,7 @@ function printIcons(icons, container) {
     const types = [];
  // cicliamo sugli array per farci restituire il valore desiderato
     icons.forEach((icon) => {
-      if (!types.includes(icon.type)) {
+      if (! types.includes(icon.type)) {
         types.push(icon.type);
       }
       // qui diciamo che se il type della icon non è incluso nel types, ce lo stampa nell'array
