@@ -108,12 +108,12 @@ $(document).ready(function(){
 // prendiamo delle referenze
 const container = $(".icons");
 // richiamo della funzione
- // printIcons(coloredIcons, container);
+ // printIcons(icons, container);
 
 
 const coloredIcons = colorIcons(icons, colors);
 console.log(coloredIcons);
-
+printIcons(coloredIcons, container);
 }); //fine documento
 
 
@@ -127,7 +127,8 @@ function printIcons(icons, container) {
     const html =   //template literal per concatenare più stringhe
 
     `<div class="icon">
-    <i class="${family} ${prefix}${name}"></i>
+    <i class="${family} ${prefix}${name}"
+        style="color: ${color}"></i>
     <div class="title">
     ${name}
     </div>
@@ -135,6 +136,8 @@ function printIcons(icons, container) {
 
     container.append(html);
   });
+
+}
 
   // creiamo una funzione per assegnare un colore
   function colorIcons(icons, colors) {
@@ -172,4 +175,3 @@ function printIcons(icons, container) {
     });
     return types;
   }
-}
