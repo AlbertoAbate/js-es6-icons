@@ -128,7 +128,7 @@ select.change(() => {
   console.log(selected);
 
   const filteredIcons = filterIcons(coloredIcons, selected);
-  printIcons(filterIcons, container);
+  printIcons(filteredIcons, container);
 });
 
 
